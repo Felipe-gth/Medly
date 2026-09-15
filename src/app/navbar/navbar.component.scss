@@ -1,12 +1,17 @@
 .container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 70px;
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 100;
 }
 
 .navbar {
   list-style-type: none;
-  background-color: #464646;
+  background-color: #b2d7e5;
   border-radius: 20px;
   height: 40px;
   width: 55%;
@@ -34,7 +39,7 @@
 
 .navbar a {
   text-decoration: none;
-  color: #cdcdcd;
+  color:  #477289;
   font-weight: bold;
   font-size: 12.5px;
   letter-spacing: -0.2px;
@@ -48,7 +53,7 @@
 }
 
 .navbar a.selected {
-  color: #cdcdcd;
+  color:  #477289;
 }
 
 .indicator {
@@ -57,7 +62,7 @@
   left: 4px;
   width: calc(50% - 4px);
   height: calc(100% - 8px);
-  background-color: #646464;
+  background-color: #95a5ac;
   opacity: 0.5;
   border-radius: 16px;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
