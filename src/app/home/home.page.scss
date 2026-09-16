@@ -1,0 +1,16 @@
+.title {
+    color: #1f2933;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+
+    padding: 0 15px;
+}
+
+:host i {
+  font-size: 28px;
+  color: #1f2933;
+}

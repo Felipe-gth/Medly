@@ -10,7 +10,6 @@ export class MedicinesPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { ; }
 
 }
