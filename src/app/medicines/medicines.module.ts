@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular/lazy';
 
 import { Routes, RouterModule } from '@angular/router';
 import { MedicinesPage } from './medicines.page';
+import { SharedModule } from '../shared/shared-module';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   declarations: [MedicinesPage]
 })
