@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicineComponent  implements OnInit {
 
+  selectedDay: boolean = true;
+  
   constructor() { }
 
   ngOnInit() { ; }
