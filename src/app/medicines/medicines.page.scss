@@ -1,5 +1,7 @@
-.page-top {
+.header {
   padding: 0;
+  background-color: #ffffff;
+  z-index: 100;
 }
 
 .title {
@@ -19,33 +21,101 @@
   font-size: 26px;
 }
 
+.medicine {
+  z-index: 100;
+}
+
 .add-medicine {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  gap: 5px;
 
   position: fixed;
-  top: 80px; 
-  left: 50%;  
-  padding: 0;
+  top: 80px;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  width: 100%;
+  box-sizing: border-box;
 
   z-index: 100;
 }
 
-.add-medicine button {
-  color: #477289;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 3px;
+.add-medicine input {
+  flex: 1 1 auto;
+  min-width: 0;
 
-  padding: 0 10px;
-  border-radius: 20px;
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+
+  padding: 0 14px;
 
   border: none;
-  background-color: #b2d7e5;
+  border-radius: 24px;
+  background-color: #fff;
 
-  font-weight: 700;
+  color: #183B4E;
+  font-size: 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  outline: 2px solid #AED9E8;
+}
+
+.add-medicine input::placeholder {
+  color: #90a8b8;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-medicine input:focus {
+  outline: 2px solid #94becc;
+}
+
+.add-medicine button {
+  flex: 0 0 auto;
+  width: 42px appealing;
+}
+
+.add-medicine button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 42px;
+    height: 42px;
+    padding: 0 12px;
+
+    border: none;
+    border-radius: 24px;
+    background-color: #AED9E8;
+
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+
+    transition: width 0.25s ease;
+}
+
+.add-medicine button p {
+    display: none;
+    margin: 0;
+    color: #477289;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.add-medicine button:hover {
+    width: 210px;
+}
+
+.add-medicine button:hover p {
+    display: block;
 }
 
 .add-medicine i {
@@ -53,10 +123,41 @@
   font-weight: 600;
 }
 
-h1 {
+.header h1 {
   color: #183B4E;
   font-size: 30px;
   font-weight: 600;
   margin: 0;
   line-height: 1.2;
+}
+
+main {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.body h2 {
+  color: #183B4E;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.body p {
+  padding: 0;
+  margin: 0;
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.empty {
+  margin-bottom: 60px;
+  padding: 20px;
+  width: 80%;
 }

@@ -1,17 +1,30 @@
-<section class="page-top">
-    <article class="title">
+<header class="header">
+    <section class="title">
         <i class="fa-solid fa-pills fa-rotate-by" style="color: #183B4E; --fa-rotate-angle: 35deg;"></i>
         <h1>Meus medicamentos</h1>
-    </article>
+    </section>
 
-    <article class="add-medicine">
-        <button>
-            <i class="fa-solid fa-plus" style="color: #477289;"></i>
-            <p>Adicionar medicamento</p>
-        </button>
-    </article>
-</section>
+    <section class="medicines">
 
-<section>
-    <app-medicine></app-medicine>
-</section>
+        <article class="add-medicine">
+            <input type="text" placeholder="Procurar medicamento">
+            <button>
+                <i class="fa-solid fa-plus" style="color: #477289;"></i>
+                <p>Adicionar medicamento</p>
+            </button>
+        </article>
+    </section>
+</header>
+
+<main class="body">
+    @if (medicines.length){
+        <app-medicine></app-medicine>
+    }
+    @else {
+        <section class="empty">
+            <img src="../../assets/empy-state.png" alt="Frasco de remedio">
+            <h2>Nenhum medicamento cadastrado.</h2>
+            <p>Cadastre seu primeiro medicamento para iniciar.</p>
+        </section>
+    }
+</main>
