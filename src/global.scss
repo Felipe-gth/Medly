@@ -56,3 +56,57 @@ body {
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --ion-dynamic-font: "Inter Variable", "Inter", sans-serif;
 }
+
+/* Classe passada no TS via cssClass: 'alert' */
+.alert {
+  --background: #ffffff;
+  --color: #000000;
+}
+
+.alert .alert-wrapper {
+  border-radius: 15px !important;
+  padding: 0 24px 24px 0 !important;
+  border: 1px solid #e0e0e0 !important;
+  overflow: hidden; /* Garante que nada saia das bordas arredondadas */
+}
+
+.alert .alert-title {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.alert .alert-message {
+  color: #adadad !important;
+  font-weight: 300 !important;
+  padding: 0 24px !important;
+}
+
+/* 2. Grupo de botões */
+.alert .alert-button-group {
+  padding: 15px 0 0 0 !important;
+  gap: 8px !important;
+}
+
+/* 3. Botão Cancelar - Forçando o fundo e texto */
+.alert button.cancel-btn {
+  background-color: #AED9E8 !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+}
+
+.alert button.cancel-btn .alert-button-inner {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* 4. Botão Excluir - Forçando o fundo e texto */
+.alert button.delete-btn {
+  background-color: #da3232 !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+}
+
+.alert button.delete-btn .alert-button-inner {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
