@@ -1,0 +1,29 @@
+<nav class="container">
+  <ul class="navbar">
+
+    <span class="indicator" [class.active-right]="isMedicinesActive()"></span>
+
+    <li>
+      <a
+        routerLink=""
+        routerLinkActive="selected"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>Início</span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        routerLink="medicines"
+        routerLinkActive="selected"
+      >
+        <i class="fa-solid fa-pills fa-rotate-by"
+           style="--fa-rotate-angle: 35deg;"></i>
+        <span>Medicamentos</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>

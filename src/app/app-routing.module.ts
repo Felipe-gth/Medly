@@ -1,19 +1,20 @@
+import { PatientModule } from './pages/patient/patient.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'medicines',
-    loadChildren: () => import('./medicines/medicines.module').then( m => m.MedicinesPageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'patient',
+    loadChildren: () => import('./pages/patient/patient.module').then( m => m.PatientModule)
   },
 ];
 

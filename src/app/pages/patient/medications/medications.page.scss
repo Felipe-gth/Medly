@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .header {
   padding: 0;
   background-color: #ffffff;
@@ -131,15 +137,14 @@
   line-height: 1.2;
 }
 
-main {
-  height: 100%;
+ion-content.body {
+  flex: 1;
+  min-height: 0;
   padding: 70px 0;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: flex-start;
-  
 }
 
 .empty h2 {
@@ -161,11 +166,15 @@ main {
 .empty {
   padding: 0 30px;
   width: 80%;
+  min-height: 200px;
 
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border-radius: 12px;
 }
 
 .content {
