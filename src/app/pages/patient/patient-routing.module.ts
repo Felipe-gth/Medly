@@ -1,10 +1,7 @@
-import { MedicationsPageModule } from './medications/medications.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PatientLayoutComponent } from './patient-layout/patient-layout.component';
-import { HomePage } from './home/home.page';
-import { MedicationsPage } from './medications/medications.page';
 
 const routes: Routes = [
   {
@@ -33,7 +30,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule, RouterModule.forChild(routes), 
+  ],
+  exports: [RouterModule]
 })
 export class PatientRoutingModule { }

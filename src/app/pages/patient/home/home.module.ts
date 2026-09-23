@@ -23,5 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   declarations: [HomePage],
+  exports: [RouterModule]
 })
 export class HomePageModule {}

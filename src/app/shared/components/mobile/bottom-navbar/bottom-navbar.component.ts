@@ -11,6 +11,6 @@ export class BottomNavbarComponent {
   public router = inject(Router);
 
   isMedicinesActive(): boolean {
-    return this.router.url.includes('medicines');
+    return this.router.url.includes('medications');
   }
 }

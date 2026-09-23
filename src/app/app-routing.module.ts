@@ -1,11 +1,10 @@
-import { PatientModule } from './pages/patient/patient.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'patient',
     pathMatch: 'full'
   },
   {

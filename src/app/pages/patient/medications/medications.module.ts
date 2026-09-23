@@ -17,10 +17,12 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule.forChild(routes),
     IonHeader,
     IonContent,
     SharedModule,
   ],
   declarations: [MedicationsPage],
+  exports: [RouterModule]
 })
 export class MedicationsPageModule {}
