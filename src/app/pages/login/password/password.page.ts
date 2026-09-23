@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../services/login-service';
 import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
@@ -13,6 +13,7 @@ export class PasswordPage implements ViewWillEnter {
 
   private _router = inject(Router);
   private _loginService = inject(LoginService);
+  private _changeDetectorRef = inject(ChangeDetectorRef);
 
   emailValue: string = '';
   passwordVisible: boolean = false;
@@ -28,6 +29,8 @@ export class PasswordPage implements ViewWillEnter {
     if (!this.emailValue.trim()) {
       this._router.navigate(['/login'])
     }
+
+    this._changeDetectorRef.detectChanges();
   }
 
   togglePasswordVisibility(): void {

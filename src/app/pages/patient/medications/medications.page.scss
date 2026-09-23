@@ -79,8 +79,9 @@
   text-overflow: ellipsis;
 }
 
-.add-medicine input:focus {
+.input:focus {
   outline: 2px solid #94becc;
+  background-color: #f0f0f0;
 }
 
 .add-medicine button {

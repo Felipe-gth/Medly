@@ -37,7 +37,7 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* O aplicativo usa o tema claro independentemente da preferência do sistema. */
 
 /* Inter Font */
 @import "@fontsource-variable/inter";
@@ -45,11 +45,14 @@
 html,
 body {
   background-color: #ffffff;
+  color: #232323;
   font-family: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
 }
 
 :root {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #232323;
   --ion-font-family: "Inter Variable", "Inter", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --ion-default-font: "Inter Variable", "Inter", -apple-system,
@@ -60,7 +63,6 @@ body {
 /* Classe passada no TS via cssClass: 'alert' */
 .alert {
   --background: #ffffff;
-  --color: #000000;
 }
 
 .alert .alert-wrapper {
@@ -71,7 +73,6 @@ body {
 }
 
 .alert .alert-title {
-  color: #000000 !important;
   font-weight: 600 !important;
 }
 

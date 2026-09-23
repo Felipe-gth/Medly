@@ -4,16 +4,26 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular/lazy';
 
-import { LoginPage } from './login.page';
+import { EmailPage } from './email/email.page';
+import { PasswordPage } from './password/password.page';
 
 import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {
+   {
     path: '',
-    component: LoginPage
-  }
+    redirectTo: 'email',
+    pathMatch: 'full'
+  },
+  {
+    path: 'email',
+    component: EmailPage
+  },
+  {
+    path: 'password',
+    component: PasswordPage
+  },
 ];
 
 @NgModule({
@@ -23,6 +33,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [LoginPage]
+  declarations: [EmailPage, PasswordPage],
+  exports: [RouterModule]
 })
 export class LoginPageModule {}
