@@ -1,0 +1,32 @@
+<ion-content class="container">
+  <h3 class="title">Bem vindo(a) de volta!</h3>
+
+  <section class="form">
+    <label class="label">Informe o seu e-mail:</label>
+
+    <input type="email" email
+    id="email"
+    name="email"
+    class="input"
+    required
+    placeholder="seuemail@exmeplo.com"
+    [(ngModel)]="emailValue"
+    #emailInput="ngModel">
+
+    @if (emailInput.invalid && emailInput.dirty) {
+      <span class="error-text" >
+        Por favor, insira um e-mail válido.
+      </span>
+    }
+  </section>
+
+  <button class="btn" (click)="ToPasswordPage()"
+  [disabled]="emailInput.invalid"
+  [class.disabled]="emailInput.invalid">Continuar</button>
+
+  <a routerLink="" class="a"><span>Não possuo conta</span></a>
+
+  <div class="login-divider">
+    <span>ou continue com</span>
+  </div>
+</ion-content>

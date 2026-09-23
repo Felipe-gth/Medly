@@ -1,0 +1,24 @@
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(350px, 100%);
+  margin: 24px 0 16px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #d1d5db;
+}
+
+.error-text {
+  color: #eb445a; /* Cor de erro/perigo do Ionic */
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+}
