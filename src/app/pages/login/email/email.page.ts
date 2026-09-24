@@ -36,4 +36,8 @@ export class EmailPage implements OnInit {
   get isFormValid() {
     return isEmailValid(this.emailValue);
   }
+
+  OnSubmit() {
+    this.EmailToPasswordPage();
+  }
 }

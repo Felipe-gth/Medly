@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { arePasswordsValid, getPasswordRequirements } from '../../../shared/utils/validators/validators';
+import { arePasswordsValid, getPasswordRequirements } from '../../shared/utils/validators/validators';
 import { ViewWillEnter } from '@ionic/angular';
-import { ShareInfoService } from '../../../shared/services/share-info.service';
+import { ShareInfoService } from '../../shared/services/share-info.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
   templateUrl: './new-password.page.html',
-  styleUrls: ['./new-password.page.scss', '../../login/login.page.scss', '../../../shared/utils/validators/validators.scss'],
+  styleUrls: ['./new-password.page.scss', '../login/login.page.scss', '../../shared/utils/validators/validators.scss'],
   standalone: false,
 })
 export class NewPasswordPage implements ViewWillEnter {
@@ -32,7 +32,7 @@ export class NewPasswordPage implements ViewWillEnter {
     this.codeValue = this._shareInfoService.getCode();
 
     if (!this.codeValue.trim()) {
-      this._router.navigate(['/change-password']);
+      this._router.navigate(['/change-password'], { replaceUrl: true });
     }
 
     this._changeDetectorRef.detectChanges();
@@ -44,5 +44,13 @@ export class NewPasswordPage implements ViewWillEnter {
 
   get passwordReqs() {
     return getPasswordRequirements(this.registerPassword)
+  }
+
+  Redirect() {
+    this._router.navigate(['/login']);
+  }
+
+  OnSubmit() {
+    this.Redirect();
   }
 }

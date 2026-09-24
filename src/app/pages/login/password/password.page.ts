@@ -26,7 +26,7 @@ export class PasswordPage implements ViewWillEnter {
     this.emailValue = this._shareInfoService.getEmail();
 
     if (!this.emailValue.trim()) {
-      this._router.navigate(['/login'])
+      this._router.navigate(['/login'], { replaceUrl: true })
     }
 
     this._changeDetectorRef.detectChanges();
@@ -34,6 +34,14 @@ export class PasswordPage implements ViewWillEnter {
 
   EmailToChangePasswordPage() {
     this._shareInfoService.setEmail(this.emailValue.trim());
-    this._router.navigate(['/change-password'])
+    this._router.navigate(['/code-validation'])
+  }
+
+  Redirect() {
+    this._router.navigate(['/patient']);
+  }
+
+  OnSubmit() {
+    this.Redirect();
   }
 }

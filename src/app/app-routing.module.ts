@@ -1,4 +1,3 @@
-import { PasswordInputComponent } from './shared/components/password-input/password-input.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -19,6 +18,10 @@ const routes: Routes = [
   {
     path: 'change-password',
     loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+  {
+    path: 'code-validation',
+    loadChildren: () => import('./pages/code-validation/code-validation.module').then( m => m.CodeValidationModule)
   },
   {
     path: 'patient',

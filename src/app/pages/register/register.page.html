@@ -1,64 +1,73 @@
 <ion-content class="container">
+  <form (ngSubmit)="OnSubmit()">
     <h3>Olá! Vamos começar?</h3>
 
     <section class="form">
-        <label class="label">Informe seu e-mail:</label>
-        
-        <input type="email"
-            id="email"
-            name="email"
-            class="input"
-            required
-            placeholder="seuemail@exmeplo.com"
-            [(ngModel)]="emailValue"
-            #emailInput="ngModel">
+      <!-- Label associado via atributo 'for' ao id 'email' -->
+      <label for="email" class="label">Informe seu e-mail:</label>
 
-        @if (!isEmailValid(emailValue) && emailValue) {
-            <span class="error-text" >
-                Por favor, insira um e-mail válido (ex: nome@dominio.com)
-            </span>
-        }
+      <input type="email"
+        id="email"
+        name="email"
+        class="input"
+        required
+        autocomplete="email"
+        placeholder="seuemail@exemplo.com"
+        [(ngModel)]="emailValue"
+        #emailInput="ngModel">
 
-        <app-password-input
-            label="Crie sua senha:"
-            placeholder="Crie uma senha forte"
-            [(value)]="registerPassword">
-        </app-password-input>
+      @if (!isEmailValid(emailValue) && emailValue) {
+        <span class="error-text">
+          Por favor, insira um e-mail válido (ex: nome@dominio.com)
+        </span>
+      }
 
-        @if (registerPassword) {
-            <ul class="password-requirements">
-                <li [class.valid]="passwordReqs.hasMinLength">
-                    Pelo menos 8 caracteres
-                </li>
-                <li [class.valid]="passwordReqs.hasUpperCase">
-                    Pelo menos 1 letra maiúscula
-                </li>
-                <li [class.valid]="passwordReqs.hasLowerCase">
-                    Pelo menos 1 letra minúscula
-                </li>
-                <li [class.valid]="passwordReqs.hasSpecialChar">
-                    Pelo menos 1 caractere especial (!@#$...)
-                </li>
-            </ul>
-        }
+      <app-password-input
+        name="registerPassword"
+        label="Crie sua senha:"
+        placeholder="Crie uma senha forte"
+        autocomplete="new-password"
+        [(value)]="registerPassword">
+      </app-password-input>
 
-        <app-password-input
-            label="Confirme a senha:"
-            placeholder="Repita a senha"
-            [(value)]="confirmPassword">
-        </app-password-input>
-        
-        @if (!arePasswordsValid(registerPassword, confirmPassword) && registerPassword && confirmPassword) {
-            <span class="error-text" >
-                As senhas não coicidem
-            </span>
-        }
+      @if (registerPassword) {
+        <ul class="password-requirements">
+          <li [class.valid]="passwordReqs.hasMinLength">
+            Pelo menos 8 caracteres
+          </li>
+          <li [class.valid]="passwordReqs.hasUpperCase">
+            Pelo menos 1 letra maiúscula
+          </li>
+          <li [class.valid]="passwordReqs.hasLowerCase">
+            Pelo menos 1 letra minúscula
+          </li>
+          <li [class.valid]="passwordReqs.hasSpecialChar">
+            Pelo menos 1 caractere especial (!@#$...)
+          </li>
+        </ul>
+      }
+
+      <app-password-input
+        name="confirmPassword"
+        label="Confirme a senha:"
+        placeholder="Repita a senha"
+        autocomplete="new-password"
+        [(value)]="confirmPassword">
+      </app-password-input>
+
+      @if (!arePasswordsValid(registerPassword, confirmPassword) && registerPassword && confirmPassword) {
+        <span class="error-text">
+          As senhas não coincidem
+        </span>
+      }
     </section>
-    
-        <button class="btn"
-            [disabled]="!isFormValid"
-            [class.disabled]="!isFormValid">Criar Conta
-        </button>
 
-        <a routerLink="/login/email" class="a"><span>Já possuo uma conta</span></a>
+    <button class="btn"
+      type="submit"
+      [disabled]="!isFormValid"
+      [class.disabled]="!isFormValid">Criar Conta
+    </button>
+
+    <a routerLink="/login/email" class="a"><span>Já possuo uma conta</span></a>
+  </form>
 </ion-content>

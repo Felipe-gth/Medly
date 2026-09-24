@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { arePasswordsValid, isEmailValid, getPasswordRequirements } from '../../shared/utils/validators/validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,8 @@ import { arePasswordsValid, isEmailValid, getPasswordRequirements } from '../../
   standalone: false,  
 })
 export class RegisterPage implements OnInit {
+
+  private _router = inject(Router);
 
   emailValue: string = '';
   registerPassword: string = '';
@@ -27,10 +30,6 @@ export class RegisterPage implements OnInit {
     }
    }
 
-  TogglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-  }
-
   get isFormValid() {
     return isEmailValid(this.emailValue) && 
       arePasswordsValid(this.registerPassword, this.confirmPassword)
@@ -38,5 +37,13 @@ export class RegisterPage implements OnInit {
 
   get passwordReqs() {
     return getPasswordRequirements(this.registerPassword);
+  }
+
+  Redirect() {
+    this._router.navigate(['/patient']);
+  }
+
+  OnSubmit() {
+    this.Redirect();
   }
 }
