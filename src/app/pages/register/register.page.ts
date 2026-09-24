@@ -17,7 +17,11 @@ export class RegisterPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { ; }
+  ngOnInit() { 
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+   }
 
   TogglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
