@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
-import { EmailToPasswordService } from '../services/email-to-password.service';
+import { ShareInfoService } from '../../../shared/services/share-info.service';
 import { isEmailValid } from '../../../shared/utils/validators/validators';
 
 @Component({
@@ -12,7 +12,7 @@ import { isEmailValid } from '../../../shared/utils/validators/validators';
 export class EmailPage implements OnInit {
 
   private _router = inject(Router);
-  private _loginService = inject(EmailToPasswordService);
+  private _shareInfoService = inject(ShareInfoService);
 
   emailValue: string = '';
 
@@ -26,9 +26,9 @@ export class EmailPage implements OnInit {
     }
    }
 
-  ToPasswordPage() {
+  EmailToPasswordPage() {
     if (this.emailValue.trim()){
-      this._loginService.setEmail(this.emailValue.trim());
+      this._shareInfoService.setEmail(this.emailValue.trim());
       this._router.navigate(['/login/password']);
     }
   }

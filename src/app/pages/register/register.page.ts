@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  get isFormValid(): boolean {
+  get isFormValid() {
     return isEmailValid(this.emailValue) && 
       arePasswordsValid(this.registerPassword, this.confirmPassword)
   }

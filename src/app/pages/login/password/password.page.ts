@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { EmailToPasswordService } from '../services/email-to-password.service';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ShareInfoService } from '../../../shared/services/share-info.service';
 import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 
@@ -12,7 +12,7 @@ import { ViewWillEnter } from '@ionic/angular';
 export class PasswordPage implements ViewWillEnter {
 
   private _router = inject(Router);
-  private _loginService = inject(EmailToPasswordService);
+  private _shareInfoService = inject(ShareInfoService);
   private _changeDetectorRef = inject(ChangeDetectorRef);
 
   emailValue: string = '';
@@ -23,12 +23,17 @@ export class PasswordPage implements ViewWillEnter {
       document.activeElement.blur();
     }
 
-    this.emailValue = this._loginService.getEmail();
+    this.emailValue = this._shareInfoService.getEmail();
 
     if (!this.emailValue.trim()) {
       this._router.navigate(['/login'])
     }
 
     this._changeDetectorRef.detectChanges();
+  }
+
+  EmailToChangePasswordPage() {
+    this._shareInfoService.setEmail(this.emailValue.trim());
+    this._router.navigate(['/change-password'])
   }
 }
