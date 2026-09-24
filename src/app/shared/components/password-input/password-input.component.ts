@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'app-password-input',
     templateUrl: './password-input.component.html',
-    styleUrls: ['../../../pages/login/login.page.scss', './password-input.component.scss'],
+    styleUrls: ['./password-input.component.scss', '../../../pages/login/login.page.scss'],
     standalone: false
 })
 export class PasswordInputComponent {

@@ -1,0 +1,38 @@
+.password-requirements {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 16px 0;
+  font-size: 0.85rem;
+
+  li {
+    color: #e74c3c; // Vermelho por padrão (não cumprido)
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+
+    &::before {
+      content: '✕';
+    }
+
+    &.valid {
+      color: #2ecc71; // Verde quando o requisito é válido
+
+      &::before {
+        content: '✓';
+      }
+    }
+  }
+}
+
+.error-text {
+  color: #eb445a; 
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+}
