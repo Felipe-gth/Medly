@@ -5,25 +5,24 @@
     <label class="label">Informe seu e-mail:</label>
 
     <input type="email"
-      id="email"
-      name="email"
-      class="input"
-      required
-      appEmailValidator
-      placeholder="seuemail@exmeplo.com"
-      [(ngModel)]="emailValue"
-      #emailInput="ngModel">
+        id="email"
+        name="email"
+        class="input"
+        required
+        placeholder="seuemail@exmeplo.com"
+        [(ngModel)]="emailValue"
+        #emailInput="ngModel">
 
-    @if (emailInput.errors?.['invalidEmail'] && emailInput.dirty) {
-      <span class="error-text" >
-        Por favor, insira um e-mail válido.
-      </span>
+    @if (!isEmailValid(emailValue) && emailValue) {
+        <span class="error-text" >
+            Por favor, insira um e-mail válido (ex: nome@dominio.com)
+        </span>
     }
   </section>
 
   <button class="btn" (click)="ToPasswordPage()"
-  [disabled]="emailInput.invalid"
-  [class.disabled]="emailInput.invalid">Continuar</button>
+  [disabled]="!isFormValid"
+  [class.disabled]="!isFormValid">Continuar</button>
 
   <a routerLink="/register" class="a"><span>Ainda não possuo uma conta</span></a>
 

@@ -6,7 +6,7 @@ import { ViewWillEnter } from '@ionic/angular';
 @Component({
   selector: 'app-login-password',
   templateUrl: './password.page.html',
-  styleUrls: ['../login.page.scss', './password.page.scss'],
+  styleUrls: ['./password.page.scss', '../login.page.scss', '../../../shared/utils/validators/validators.scss'],
   standalone: false,
 })
 export class PasswordPage implements ViewWillEnter {

@@ -3,19 +3,19 @@
 
     <section class="form">
         <label class="label">Informe seu e-mail:</label>
+        
         <input type="email"
             id="email"
             name="email"
             class="input"
             required
-            appEmailValidator
             placeholder="seuemail@exmeplo.com"
             [(ngModel)]="emailValue"
             #emailInput="ngModel">
 
-        @if (emailInput.errors?.['invalidEmail'] && emailInput.dirty) {
+        @if (!isEmailValid(emailValue) && emailValue) {
             <span class="error-text" >
-                Por favor, insira um e-mail válido.
+                Por favor, insira um e-mail válido (ex: nome@dominio.com)
             </span>
         }
 
@@ -25,29 +25,39 @@
             [(value)]="registerPassword">
         </app-password-input>
 
+        @if (registerPassword) {
+            <ul class="password-requirements">
+                <li [class.valid]="passwordReqs.hasMinLength">
+                    Pelo menos 8 caracteres
+                </li>
+                <li [class.valid]="passwordReqs.hasUpperCase">
+                    Pelo menos 1 letra maiúscula
+                </li>
+                <li [class.valid]="passwordReqs.hasLowerCase">
+                    Pelo menos 1 letra minúscula
+                </li>
+                <li [class.valid]="passwordReqs.hasSpecialChar">
+                    Pelo menos 1 caractere especial (!@#$...)
+                </li>
+            </ul>
+        }
+
         <app-password-input
             label="Confirme a senha:"
             placeholder="Repita a senha"
             [(value)]="confirmPassword">
         </app-password-input>
         
-        @if (registerPassword && confirmPassword) {
-            @if (registerPassword !== confirmPassword) {
-                <span class="error-text" >
-                    As senhas não coicidem.
-                </span>
-            }
-        }
-        @else {
+        @if (!arePasswordsValid(registerPassword, confirmPassword) && registerPassword && confirmPassword) {
             <span class="error-text" >
-                Por favor, informe a senha.
+                As senhas não coicidem
             </span>
         }
     </section>
     
         <button class="btn"
-            [disabled]="emailInput.invalid || registerPassword !== confirmPassword"
-            [class.disabled]="emailInput.invalid || registerPassword !== confirmPassword">Criar Conta
+            [disabled]="!isFormValid"
+            [class.disabled]="!isFormValid">Criar Conta
         </button>
 
         <a routerLink="/login/email" class="a"><span>Já possuo uma conta</span></a>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { arePasswordsValid, isEmailValid, getPasswordRequirements } from '../../shared/utils/validators/validators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './register.page.html',
-  styleUrls: ['../../pages/login/login.page.scss', './register.page.scss'],
-  standalone: false,
+  styleUrls: ['../../pages/login/login.page.scss', '../../shared/utils/validators/validators.scss', './register.page.scss'],
+  standalone: false,  
 })
 export class RegisterPage implements OnInit {
 
@@ -14,6 +15,9 @@ export class RegisterPage implements OnInit {
   
   passwordVisible: boolean = false;
   equalPasswords: boolean = this.registerPassword.trim() === this.confirmPassword.trim();
+
+  isEmailValid = isEmailValid;
+  arePasswordsValid = arePasswordsValid;
 
   constructor() { }
 
@@ -25,5 +29,14 @@ export class RegisterPage implements OnInit {
 
   TogglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
+  }
+
+  get isFormValid(): boolean {
+    return isEmailValid(this.emailValue) && 
+      arePasswordsValid(this.registerPassword, this.confirmPassword)
+  }
+
+  get passwordReqs() {
+    return getPasswordRequirements(this.registerPassword);
   }
 }
