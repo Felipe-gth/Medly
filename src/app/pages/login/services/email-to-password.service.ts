@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root' // ou no nível do seu módulo
 })
-export class LoginService {
+export class EmailToPasswordService {
   private email: string = '';
 
   setEmail(email: string) {
