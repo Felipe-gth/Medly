@@ -81,3 +81,52 @@
     text-decoration: underline;
     text-underline-offset: 2px;
 }
+
+.password-field {
+    position: relative;
+}
+
+.password-field .input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    place-items: center;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #61717a;
+    cursor: pointer;
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid #94becc;
+}
+
+.checkbox {
+  --checkbox-background-checked: #AED9E8;
+  --checkbox-color-checked: #ffffff;    
+  --border-color: #232323;             
+  --border-color-checked: #313131;       
+  --border-radius: 5px;
+  --size: 18px;
+  --checkmark-width: 3px;
+  padding: 2px 0 0 5px;
+  border: none;
+  outline: none;
+}
+
+.error-text {
+  color: #eb445a; /* Cor de erro/perigo do Ionic */
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+}

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
-import { LoginService } from '../services/login-service';
+import { EmailToPasswordService } from '../services/email-to-password.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { LoginService } from '../services/login-service';
 export class EmailPage implements OnInit {
 
   private _router = inject(Router);
-  private _loginService = inject(LoginService);
+  private _loginService = inject(EmailToPasswordService);
 
   emailValue: string = '';
 

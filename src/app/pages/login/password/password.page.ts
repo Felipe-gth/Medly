@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { LoginService } from '../services/login-service';
+import { EmailToPasswordService } from '../services/email-to-password.service';
 import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 
@@ -12,11 +12,10 @@ import { ViewWillEnter } from '@ionic/angular';
 export class PasswordPage implements ViewWillEnter {
 
   private _router = inject(Router);
-  private _loginService = inject(LoginService);
+  private _loginService = inject(EmailToPasswordService);
   private _changeDetectorRef = inject(ChangeDetectorRef);
 
   emailValue: string = '';
-  passwordVisible: boolean = false;
   passwordValue: string = '';
 
   ionViewWillEnter() {
@@ -31,9 +30,5 @@ export class PasswordPage implements ViewWillEnter {
     }
 
     this._changeDetectorRef.detectChanges();
-  }
-
-  togglePasswordVisibility(): void {
-    this.passwordVisible = !this.passwordVisible;
   }
 }

@@ -8,6 +8,7 @@ import { EmailPage } from './email/email.page';
 import { PasswordPage } from './password/password.page';
 
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared-module';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
+    SharedModule
   ],
   declarations: [EmailPage, PasswordPage],
   exports: [RouterModule]
