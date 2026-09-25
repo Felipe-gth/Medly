@@ -9,6 +9,7 @@ import { PasswordPage } from './password/password.page';
 
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared-module';
+import { EmailExistsGuard } from '../../core/guards/login.guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'password',
-    component: PasswordPage
+    component: PasswordPage,
+    canActivate: [EmailExistsGuard]
   },
 ];
 

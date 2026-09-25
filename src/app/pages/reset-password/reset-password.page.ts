@@ -1,7 +1,8 @@
+import { AuthService } from './../../core/services/auth.service';
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { arePasswordsValid, getPasswordRequirements } from '../../shared/utils/validators/validators';
 import { ViewWillEnter } from '@ionic/angular';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -12,49 +13,42 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NewPasswordPage implements ViewWillEnter {
 
   private _router = inject(Router);
-  private _changeDetectorRef = inject(ChangeDetectorRef)
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+  private _authService = inject(AuthService);
 
   registerPassword: string = '';
   confirmPassword: string = '';
-  codeValue: string = '';
+  code: string = '';
 
   arePasswordsValid = arePasswordsValid;
 
-  constructor() {
-    const navigation = this._router.getCurrentNavigation();
-    
-    if (navigation?.extras.state) {
-      this.codeValue = navigation.extras.state['code'] || '';
-    } else {
-      const stateNavegador = history.state;
-      if (stateNavegador && stateNavegador['code']) {
-        this.codeValue = stateNavegador['code'];
-      }
-    }
-   }
+  constructor() { }
 
   ionViewWillEnter() {
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }    
 
-    if (!this.codeValue.trim()) {
-      this._router.navigate(['/code-validation'], { replaceUrl: true });
+    const codeValue = this._authService.GetCode();
+    if(codeValue){
+      this.code = codeValue;
     }
 
     this._changeDetectorRef.detectChanges();
   }
 
   get isFormValid() {
-    return arePasswordsValid(this.registerPassword, this.confirmPassword)
+    return arePasswordsValid(this.registerPassword, this.confirmPassword);
   }
 
   get passwordReqs() {
-    return getPasswordRequirements(this.registerPassword)
+    return getPasswordRequirements(this.registerPassword);
   }
 
   RedirectToLogin() {
-    this._router.navigate(['/login']);
+    this._router.navigate(['/login'], {
+      queryParams: {flow: 'new_password_login'}
+    });
   }
 
   OnSubmit() {

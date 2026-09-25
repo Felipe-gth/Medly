@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CodeExistsGuard, EmailExistsGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
   {
@@ -17,11 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'reset-password',
-    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule),
+    canActivate: [CodeExistsGuard]
   },
   {
     path: 'code-validation',
-    loadChildren: () => import('./pages/code-validation/code-validation.module').then( m => m.CodeValidationModule)
+    loadChildren: () => import('./pages/code-validation/code-validation.module').then( m => m.CodeValidationModule),
+    canActivate: [EmailExistsGuard]
   },
   {
     path: 'patient',

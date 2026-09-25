@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-change-password',
@@ -13,9 +14,10 @@ export class CodeValidationPage implements ViewWillEnter {
   private _router = inject(Router);
   private _route = inject(ActivatedRoute)
   private _changeDetectorRef = inject(ChangeDetectorRef);
+  private _authService = inject(AuthService);
 
-  emailValue: string = '';
-  codeValue: string = '';
+  email: string = '';
+  code: string = '';
   flow: string = '';
 
   constructor() { }
@@ -26,21 +28,21 @@ export class CodeValidationPage implements ViewWillEnter {
     }
 
     this.flow = this._route.snapshot.queryParams['flow'] || 'login';
-    this.emailValue = this._route.snapshot.queryParams['email'] || '';
+
+    const emailValue = this._authService.GetEmail();
+    if (emailValue) {
+      this.email = emailValue;
+    }
 
     this._changeDetectorRef.detectChanges();
    }
 
    RedirectToResetPasswordPage() {
-    this._router.navigate(['/reset-password'], {
-      state: {code: this.codeValue}
-    });
+    this._router.navigate(['/reset-password']);
    }
 
    RedirectToPasswordLoginPage() {
-    this._router.navigate(['/login/password'], {
-      queryParams: {email: this.emailValue}
-    });
+    this._router.navigate(['/login/password']);
    }
 
    RedirectToHome() {
@@ -48,11 +50,13 @@ export class CodeValidationPage implements ViewWillEnter {
    }
 
   OnSubmit() {
+    this._authService.SetCode(this.code);
+
     if (this.flow === 'reset_password'){
       this.RedirectToResetPasswordPage();
     }
-  else {
-    this.RedirectToHome();
+    else {
+      this.RedirectToHome();
     }
   }
 }

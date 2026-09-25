@@ -1,6 +1,9 @@
 <ion-content class="container">
   <form (ngSubmit)="OnSubmit()">
     <h3 class="title">Que bom ter você de volta!</h3>
+    @if (flow === 'new_password_login') {
+      <span class="label">Faça login com a sua nova senha</span>
+    }
 
     <section class="form">
       <label for="email" class="label">Informe seu e-mail:</label>
@@ -11,11 +14,11 @@
           class="input"
           required
           placeholder="seuemail@exmeplo.com"
-          [(ngModel)]="emailValue"
+          [(ngModel)]="email"
           autocomplete="email"
           #emailInput="ngModel">
 
-      @if (!isEmailValid(emailValue) && emailValue) {
+      @if (!isEmailValid(email) && email) {
           <span class="error-text" >
               Por favor, insira um e-mail válido (ex: nome@dominio.com)
           </span>

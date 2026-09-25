@@ -2,24 +2,25 @@
   <form (ngSubmit)="OnSubmit()">
     <h3 class="title">Cheque seu e-mail</h3>
 
-    <span class="label">Enviamos um código para {{ emailValue }}</span>
+    <span class="label">Enviamos um código</span> 
+    <span class="email">E-mail: {{ email.trim() }}</span>
 
     <section class="form">
       @if (flow === 'reset_password') {
-        <label for="codeValue" class="label">Redefinir senha:</label>
+        <label for="code" class="label">Redefinir senha:</label>
       }
       @else {
-        <label for="codeValue" class="label">Fazer login com código:</label>
+        <label for="code" class="label">Fazer login com código:</label>
       }
     
       <input 
-        id="codeValue"
-        name="codeValue"
+        id="code"
+        name="code"
         type="text"
         class="input"
         placeholder="XXX-XXX"
         autocomplete="one-time-code"
-        [(ngModel)]="codeValue"
+        [(ngModel)]="code"
         #codeInput="ngModel"
         maxlength="6">
     </section>
@@ -27,8 +28,8 @@
     <!-- O formulário cuida do envio via (ngSubmit), não precisa de (click) aqui -->
     <button class="btn"
       type="submit"
-      [disabled]="codeValue.length !== 6"
-      [class.disabled]="codeValue.length !== 6">
+      [disabled]="code.length !== 6"
+      [class.disabled]="code.length !== 6">
       {{ flow === 'reset_password' ? 'Continuar' : 'Entrar'}}</button>
     
 
