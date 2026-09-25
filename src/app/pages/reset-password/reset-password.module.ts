@@ -4,16 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular/lazy';
 
-import { ChangePasswordCodePage } from '../code-validation/change-password-code.page';
-
 import { Routes, RouterModule } from '@angular/router';
-import { NewPasswordPage } from './new-password.page';
+import { NewPasswordPage } from './reset-password.page';
 import { SharedModule } from '../../shared/shared-module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ChangePasswordCodePage
+    component: NewPasswordPage
   }
 ];
 
@@ -25,7 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes), SharedModule
   ],
-  declarations: [ChangePasswordCodePage, NewPasswordPage],
+  declarations: [NewPasswordPage],
   exports: [RouterModule]
 })
-export class ChangePasswordPageModule {}
+export class ResetPasswordPageModule {}

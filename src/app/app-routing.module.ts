@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'change-password',
-    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+    path: 'reset-password',
+    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
     path: 'code-validation',
@@ -26,10 +26,6 @@ const routes: Routes = [
   {
     path: 'patient',
     loadChildren: () => import('./pages/patient/patient.module').then( m => m.PatientModule)
-  },
-  {
-    path: 'change-password',
-    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
 ];
 

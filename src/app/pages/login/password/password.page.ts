@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { ShareInfoService } from '../../../shared/services/share-info.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
@@ -11,8 +10,8 @@ import { ViewWillEnter } from '@ionic/angular';
 })
 export class PasswordPage implements ViewWillEnter {
 
+  private _route = inject(ActivatedRoute);
   private _router = inject(Router);
-  private _shareInfoService = inject(ShareInfoService);
   private _changeDetectorRef = inject(ChangeDetectorRef);
 
   emailValue: string = '';
@@ -23,7 +22,7 @@ export class PasswordPage implements ViewWillEnter {
       document.activeElement.blur();
     }
 
-    this.emailValue = this._shareInfoService.getEmail();
+    this.emailValue = this._route.snapshot.queryParams['email'] || '';
 
     if (!this.emailValue.trim()) {
       this._router.navigate(['/login'], { replaceUrl: true })
@@ -32,16 +31,17 @@ export class PasswordPage implements ViewWillEnter {
     this._changeDetectorRef.detectChanges();
   }
 
-  EmailToChangePasswordPage() {
-    this._shareInfoService.setEmail(this.emailValue.trim());
-    this._router.navigate(['/code-validation'])
+  RedirectToResetPasswordCodeValidation() {
+    this._router.navigate(['/code-validation'], {
+      queryParams: {flow: 'reset_password', email: this.emailValue}
+    })
   }
 
-  Redirect() {
-    this._router.navigate(['/patient']);
+  RedirectToHome() {
+    this._router.navigate(['/patient'])
   }
 
   OnSubmit() {
-    this.Redirect();
+    this.RedirectToHome();
   }
 }

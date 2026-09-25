@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
-import { ShareInfoService } from '../../../shared/services/share-info.service';
 import { isEmailValid } from '../../../shared/utils/validators/validators';
 
 @Component({
@@ -12,7 +11,6 @@ import { isEmailValid } from '../../../shared/utils/validators/validators';
 export class EmailPage implements OnInit {
 
   private _router = inject(Router);
-  private _shareInfoService = inject(ShareInfoService);
 
   emailValue: string = '';
 
@@ -26,10 +24,11 @@ export class EmailPage implements OnInit {
     }
    }
 
-  EmailToPasswordPage() {
+  RedirectToLoginCodeValidation() {
     if (this.emailValue.trim()){
-      this._shareInfoService.setEmail(this.emailValue.trim());
-      this._router.navigate(['/login/password']);
+      this._router.navigate(['/code-validation'], {
+        queryParams: {flow: 'email', email: this.emailValue}
+      });
     }
   }
 
@@ -38,6 +37,6 @@ export class EmailPage implements OnInit {
   }
 
   OnSubmit() {
-    this.EmailToPasswordPage();
+    this.RedirectToLoginCodeValidation();
   }
 }
