@@ -30,11 +30,6 @@ export class EmailPage implements ViewWillEnter {
       document.activeElement.blur();
     }
 
-    const emailValue = this._authService.GetEmail();
-    if (emailValue) {
-      this.email = emailValue;
-    }
-
     this.flow = this._route.snapshot.queryParams['flow'] || '';
 
     this._changeDetectorRef.detectChanges();

@@ -12,7 +12,9 @@ export class RegisterPage implements OnInit {
 
   private _router = inject(Router);
 
-  emailValue: string = '';
+  name: string = '';
+  lastName: string = '';
+  email: string = '';
   registerPassword: string = '';
   confirmPassword: string = '';
   
@@ -31,7 +33,7 @@ export class RegisterPage implements OnInit {
    }
 
   get isFormValid() {
-    return isEmailValid(this.emailValue) && 
+    return isEmailValid(this.email) && 
       arePasswordsValid(this.registerPassword, this.confirmPassword)
   }
 

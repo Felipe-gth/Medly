@@ -2,17 +2,17 @@
   <form (ngSubmit)="OnSubmit()">
     <h3 class="title">Cheque seu e-mail</h3>
 
-    <span class="label">Enviamos um código</span> 
-    <span class="email">E-mail: {{ email.trim() }}</span>
+    @if (flow === 'reset_password') {
+      <label for="code" class="label">Digite o código que enviamos para redefinir sua senha</label>
+    }
+    @else {
+      <span class="label">Digite o código que enviamos para fazer login</span> 
+    }
 
     <section class="form">
-      @if (flow === 'reset_password') {
-        <label for="code" class="label">Redefinir senha:</label>
-      }
-      @else {
-        <label for="code" class="label">Fazer login com código:</label>
-      }
-    
+      <label for="code" class="label">Código:</label>
+      <span class="email">E-mail: {{ email.trim() }}</span>
+      
       <input 
         id="code"
         name="code"
@@ -23,27 +23,28 @@
         [(ngModel)]="code"
         #codeInput="ngModel"
         maxlength="6">
+
+      <button type="button"
+        [disabled]="isTimerRunning"
+        [class.disabled]="isTimerRunning"
+        class="resend-btn"
+        (click)="ReSendCode()">
+        @if (isTimerRunning) {
+          Reenviar cógido em: {{ remainingTime }}s
+        }
+        @else {
+          Reenviar código
+        }
+      </button>
     </section>
 
     <app-loading-button type="submit"
       [loading]="loading"
+      [disabled]="code.length < 6"
       [content]="flow === 'reset_password' ? 'Continuar' : 'Entrar'"
       (btnClick)="flow === 'reset_password' ? RedirectToResetPasswordPage() : RedirectToHome()">
     </app-loading-button>
-
-    <button [disabled]="isTimerRunning"
-      [class.disabled]="isTimerRunning"
-      class="resend-btn"
-      (click)="ReSendCode()">
-      @if (isTimerRunning) {
-        Reenviar cógido em: {{ remainingTime }}s
-      }
-      @else {
-        Reenviar código
-      }
-    </button>
-    
-
-    <a (click)="RedirectToPasswordLoginPage()"><span class="a">{{ flow === 'reset_password' ? '' : 'Entrar com senha' }}</span></a>
   </form>
+
+  <a (click)="RedirectToPasswordLoginPage()"><span class="a">{{ flow === 'reset_password' ? '' : 'Entrar com senha' }}</span></a>
 </ion-content>

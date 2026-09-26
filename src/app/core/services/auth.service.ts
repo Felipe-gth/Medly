@@ -19,6 +19,10 @@ export class AuthService {
         return !!this._email;
     }
 
+    ClearEmail() {
+        this._email = '';
+    }
+
     SetCode(code: string) {
         this._code = code;
     }
