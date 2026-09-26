@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular/lazy';
 
 import { Routes, RouterModule } from '@angular/router';
 import { NewPasswordPage } from './reset-password.page';
-import { SharedModule } from '../../shared/shared-module';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   {

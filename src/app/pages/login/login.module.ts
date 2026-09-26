@@ -8,7 +8,7 @@ import { EmailPage } from './email/email.page';
 import { PasswordPage } from './password/password.page';
 
 import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared-module';
+import { SharedModule } from '../../shared/shared.module';
 import { EmailExistsGuard } from '../../core/guards/login.guard';
 
 

@@ -62,11 +62,13 @@
       }
     </section>
 
-    <button class="btn"
-      type="submit"
+    <app-loading-button type="submit"
+      [loading]="loading"
       [disabled]="!isFormValid"
-      [class.disabled]="!isFormValid">Criar Conta
-    </button>
+      content="Criar conta"
+      (btnClick)="RedirectToHome()"
+      >
+    </app-loading-button>
 
     <a routerLink="/login/email" class="a"><span>Já possuo uma conta</span></a>
   </form>

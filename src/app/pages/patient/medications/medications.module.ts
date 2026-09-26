@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader } from '@ionic/angular';
 import { Routes, RouterModule } from '@angular/router';
 import { MedicationsPage } from './medications.page';
-import { SharedModule } from '../../../shared/shared-module';
+import { SharedModule } from '../../../shared/shared.module';
 
 const routes: Routes = [
   {

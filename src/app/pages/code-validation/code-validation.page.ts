@@ -19,6 +19,7 @@ export class CodeValidationPage implements ViewWillEnter {
   email: string = '';
   code: string = '';
   flow: string = '';
+  loading: boolean = false
 
   constructor() { }
 

@@ -25,10 +25,11 @@
       }
     </section>
 
-    <button class="btn" 
-      type="submit"
+    <app-loading-button type="submit" 
+      [loading]="loading"
       [disabled]="!isFormValid"
-      [class.disabled]="!isFormValid">Continuar</button>
+      content="Continuar"
+      (btnClick)="RedirectToLoginCodeValidation()"></app-loading-button>
 
     <a routerLink="/register" class="a"><span>Ainda não possuo uma conta</span></a>
     

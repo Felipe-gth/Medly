@@ -17,6 +17,7 @@ export class EmailPage implements ViewWillEnter {
   private _changeDetectorRef = inject(ChangeDetectorRef);
   private _authService = inject(AuthService)
 
+  loading: boolean = false;
   email: string = ''; 
   flow: string = '';
 
@@ -35,8 +36,6 @@ export class EmailPage implements ViewWillEnter {
     }
 
     this.flow = this._route.snapshot.queryParams['flow'] || '';
-
-    console.log(this.flow ? 'flow certo' : 'flow nao pega');
 
     this._changeDetectorRef.detectChanges();
   }

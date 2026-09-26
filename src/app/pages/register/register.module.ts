@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular/lazy';
 
 import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared-module';
+import { SharedModule } from '../../shared/shared.module';
 import { RegisterPage } from './register.page';
 
 

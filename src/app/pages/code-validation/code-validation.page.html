@@ -25,12 +25,11 @@
         maxlength="6">
     </section>
 
-    <!-- O formulário cuida do envio via (ngSubmit), não precisa de (click) aqui -->
-    <button class="btn"
-      type="submit"
-      [disabled]="code.length !== 6"
-      [class.disabled]="code.length !== 6">
-      {{ flow === 'reset_password' ? 'Continuar' : 'Entrar'}}</button>
+    <app-loading-button type="submit"
+      [loading]="loading"
+      [content]="flow === 'reset_password' ? 'Continuar' : 'Entrar'"
+      (btnClick)="flow === 'reset_password' ? RedirectToResetPasswordPage() : RedirectToHome()">
+    </app-loading-button>
     
 
     <a (click)="RedirectToPasswordLoginPage()"><span class="a">{{ flow === 'reset_password' ? '' : 'Entrar com senha' }}</span></a>

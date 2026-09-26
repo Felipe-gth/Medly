@@ -17,8 +17,8 @@ export class RegisterPage implements OnInit {
   confirmPassword: string = '';
   
   passwordVisible: boolean = false;
-  equalPasswords: boolean = this.registerPassword.trim() === this.confirmPassword.trim();
-
+  loading: boolean = false; 
+  
   isEmailValid = isEmailValid;
   arePasswordsValid = arePasswordsValid;
 
@@ -39,11 +39,11 @@ export class RegisterPage implements OnInit {
     return getPasswordRequirements(this.registerPassword);
   }
 
-  Redirect() {
+  RedirectToHome() {
     this._router.navigate(['/patient']);
   }
 
   OnSubmit() {
-    this.Redirect();
+    this.RedirectToHome();
   }
 }

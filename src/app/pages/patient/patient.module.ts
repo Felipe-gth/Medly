@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PatientLayoutComponent } from './patient-layout/patient-layout.component';
 import { IonContent, IonFooter, IonRouterOutlet } from '@ionic/angular';
 import { PatientRoutingModule } from './patient-routing.module';
-import { SharedModule } from '../../shared/shared-module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 

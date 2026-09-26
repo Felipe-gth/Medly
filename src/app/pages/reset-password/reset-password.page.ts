@@ -19,6 +19,7 @@ export class NewPasswordPage implements ViewWillEnter {
   registerPassword: string = '';
   confirmPassword: string = '';
   code: string = '';
+  loading: boolean = false;
 
   arePasswordsValid = arePasswordsValid;
 

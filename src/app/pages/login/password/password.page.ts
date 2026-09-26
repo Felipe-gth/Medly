@@ -18,6 +18,7 @@ export class PasswordPage implements ViewWillEnter {
   email: string = '';
   passwordValue: string = '';
   flow: string = '';
+  loading: boolean = false;
 
   ionViewWillEnter() {
     if (document.activeElement instanceof HTMLElement) {
