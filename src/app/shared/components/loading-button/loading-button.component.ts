@@ -11,6 +11,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
       @if (loading) {
         <ion-spinner name="dots" color="light"></ion-spinner>
+      } @else if (this.disabled) {
+        Preencha todos os campos
       } @else {
         {{ content.trim() }}
       }

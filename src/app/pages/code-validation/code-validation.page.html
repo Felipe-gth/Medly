@@ -18,7 +18,7 @@
         name="code"
         type="text"
         class="input"
-        placeholder="XXX-XXX"
+        placeholder="XXXXXX"
         autocomplete="one-time-code"
         [(ngModel)]="code"
         #codeInput="ngModel"
@@ -30,6 +30,18 @@
       [content]="flow === 'reset_password' ? 'Continuar' : 'Entrar'"
       (btnClick)="flow === 'reset_password' ? RedirectToResetPasswordPage() : RedirectToHome()">
     </app-loading-button>
+
+    <button [disabled]="isTimerRunning"
+      [class.disabled]="isTimerRunning"
+      class="resend-btn"
+      (click)="ReSendCode()">
+      @if (isTimerRunning) {
+        Reenviar cógido em: {{ remainingTime }}s
+      }
+      @else {
+        Reenviar código
+      }
+    </button>
     
 
     <a (click)="RedirectToPasswordLoginPage()"><span class="a">{{ flow === 'reset_password' ? '' : 'Entrar com senha' }}</span></a>
